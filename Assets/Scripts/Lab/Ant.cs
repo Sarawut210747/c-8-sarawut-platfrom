@@ -9,7 +9,7 @@ public class Ant : Enemy
 
     private void Start()
     {
-        Debug.Log("Hp" + Health);
+        Debug.Log("Hp Ant " + Health);
 
         Behavior();
     }
