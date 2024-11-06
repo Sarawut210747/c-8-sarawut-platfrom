@@ -2,41 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Croccodile : Enemy
+public class Croccodile : Enemy, IShootable
 {
-    [SerializeField] private float attackRange;
-    public Player player;
+   private float attackRange;
+   public float AttackRange { get { return attackRange; }set { attackRange = value; } }
+   public Player player;
+    
+   [SerializeField]
+   Transform spawnPoint;
+   public Transform SpawnPoint { get { return spawnPoint; } set {  spawnPoint = value; } }
 
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform bulletSpawnpoint;
-
-    [SerializeField] private float bulletSpawnTime;
-    [SerializeField] private float bulletTimer;
+    [SerializeField]
+    GameObject bullet;
+    public GameObject Bullet { get { return bullet; } set { bullet = value; } }
 
 
-    public void Update()
+    public float ReloadTime { get; set; }
+    public float WaitTime { get; set; }
+
+    void Start()
     {
-        bulletTimer -= Time.deltaTime;
-        Behavior();
+        
+        WaitTime = 0.0f;
+        ReloadTime = 5.0f;
+        DamageHit = 30;
+        AttackRange = 6;
+        player = GameObject.FindObjectOfType<Player>();
     }
+    private void FixedUpdate()
+    {
+        WaitTime -= Time.fixedDeltaTime;
+        Behavior();    
+
+    }
+   
+    /* public void Shoot()
+     {
+
+     }*/
+
     public override void Behavior()
     {
-        Vector3 direction = player.transform.position - transform.position;
-        float distance = direction.magnitude;
-
-        if (distance < attackRange)
+        Vector2 distance = player.transform.position - transform.position;
+        
+        if (distance.magnitude <= attackRange)
         {
-            shoot();
+            Shoot();
         }
+    
     }
-    private void shoot()
+
+    public void Shoot() 
     {
-        if (bulletTimer <= 0)
+        if(WaitTime >= ReloadTime)
         {
-            Instantiate(bullet, bulletSpawnpoint.position, Quaternion.identity);
-
-            bulletTimer = bulletSpawnTime;
+            //animator.SetTrigger("Shoot");
+            GameObject obj = Instantiate(bullet, spawnPoint.position, Quaternion.identity);
+            Rock rock = obj.gameObject.GetComponent<Rock>();
+            rock.Init(20,this);
         }
+    
 
+    
     }
+
 }

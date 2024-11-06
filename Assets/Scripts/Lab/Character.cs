@@ -15,17 +15,21 @@ public abstract class Character : MonoBehaviour
         {
             health = value;
         }
+
     }
 
     public Animator anim;
     public Rigidbody2D rb;
 
-    public bool IsDead()
+    public bool Isdead()
     {
         return Health <= 0;
+
     }
     public void TakeDamage(int damage)
     {
         Health -= damage;
+        Debug.Log($"()");
     }
 }
+
