@@ -21,6 +21,12 @@ public abstract class Character : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rb;
 
+    public virtual void Init(int newHealth)
+    {
+        health = newHealth;
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
     public bool Isdead()
     {
         return Health <= 0;

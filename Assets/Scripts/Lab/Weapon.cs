@@ -1,59 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
-
 {
-<<<<<<< HEAD
-
-    [SerializeField] int damage = 0;
-
+    [SerializeField] int damage;
     public int Damage { get { return damage; } set { damage = value; } }
-
-
-    protected string owner;
-
+    protected IShootable shooter;
 
     //abstract methods
-
-    public abstract void OnHitWith();
-=======
-    private int damage;
-    public int Damage
-    {
-        get
-        {
-            return damage;
-        }
-        set
-        {
-            damage = value;
-        }
-    }
-
-    public IShootable shooter;
->>>>>>> 2fa78be821a34fd5d0d03d5bbf69e2b70af8a164
+    public abstract void OnHitWith(Character character);
 
     public abstract void Move();
-<<<<<<< HEAD
 
 
-    public void Init(int _damage, string _owner)
-
+    public void Init(int _damage, IShootable _owner)
     {
 
         Damage = _damage;
 
-        owner = _owner;
+        shooter = _owner;
 
     }
 
 
     public int GetShootDirection() //to be modify
-
     {
-
+        float shooterDir = shooter.BulletSpawnPoint.transform.position.x - shooter.BulletSpawnPoint.parent.position.x;
+        if (shooterDir < 0)
+            return -1;
+        else
         return 1;
 
     }
@@ -63,36 +40,10 @@ public abstract class Weapon : MonoBehaviour
 
     {
 
-        //OnHitWith(other.GetComponent<Character>());
-
-      
-
-    }
-
-}
-=======
-    public void Init(int _damage, IShootable _owner)
-    {
-        Damage = _damage;
-        shooter = _owner;
-    }
-    public int GetShootDiection()
-    {
-        float shootDir = shooter.SpawnPoint.transform
-            .position.x - shooter.SpawnPoint.parent.transform.position.x;
-        if (shootDir < 0) 
-        return -1;
-        else
-            return 1;
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
         OnHitWith(other.GetComponent<Character>());
+
         Destroy(this.gameObject, 5f);
+
     }
 
-
 }
->>>>>>> 2fa78be821a34fd5d0d03d5bbf69e2b70af8a164
