@@ -4,44 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Banana : Weapon
-
 {
 
-    [SerializeField] float speed;
-
-
-    void Start()
-
+    public void Start()
     {
-
         Damage = 30;
-
-        speed = 4.0f;
-
+        speed = 4f;
         Move();
-
+        //OnHitWith();
     }
 
 
-    void Update()
 
-    { }
-
+    [SerializeField] private float speed;
 
     public override void Move()
-
     {
-
-        Debug.Log($"{this.name} moves with constant speed using Transform");
+        Debug.Log("Banana is moving with transform constant speed");
 
     }
+
+
 
 
     public override void OnHitWith(Character character)
-
     {
 
-        Console.WriteLine($"{this.name}: Overriding OnHitWith(Character) ");
 
     }
 
