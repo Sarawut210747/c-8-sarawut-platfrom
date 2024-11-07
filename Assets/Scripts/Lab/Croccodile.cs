@@ -9,7 +9,7 @@ public class Croccodile : Enemy, IShootable
     public Player player;
 
     [field : SerializeField] public GameObject Bullet { get; set; }
-    [field : SerializeField] public Transform BulletSpawnpoint { get; set; }
+    [field : SerializeField] public Transform BulletSpawnPoint { get; set; }
     [field : SerializeField] public float BulletSpawnTime { get; set; }
     [field : SerializeField] public float BulletTimer { get; set; }
 
@@ -33,7 +33,7 @@ public class Croccodile : Enemy, IShootable
     {
         if (BulletTimer <= 0)
         {
-            Instantiate(Bullet, BulletSpawnpoint.position, Quaternion.identity);
+            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
 
             BulletTimer = BulletSpawnTime;
         }

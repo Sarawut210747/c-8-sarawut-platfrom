@@ -6,7 +6,7 @@ public abstract class Weapon : MonoBehaviour
 
 {
 
-    [SerializeField] int damage;
+    [SerializeField] int damage = 0;
 
     public int Damage { get { return damage; } set { damage = value; } }
 
@@ -16,7 +16,7 @@ public abstract class Weapon : MonoBehaviour
 
     //abstract methods
 
-    public abstract void OnHitWith(Character character);
+    public abstract void OnHitWith();
 
     public abstract void Move();
 
@@ -45,9 +45,9 @@ public abstract class Weapon : MonoBehaviour
 
     {
 
-        OnHitWith(other.GetComponent<Character>());
+        //OnHitWith(other.GetComponent<Character>());
 
-        Destroy(this.gameObject);
+      
 
     }
 

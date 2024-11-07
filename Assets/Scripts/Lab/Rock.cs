@@ -24,25 +24,21 @@ public class Rock : Weapon
     }
 
 
-    void Update()
-
-    { }
 
 
     public override void Move()
 
     {
 
-        Debug.Log($"{this.name} move with Rigidbody:force ");
 
     }
 
 
-    public override void OnHitWith(Character character)
+    public override void OnHitWith()
 
     {
 
-        Console.WriteLine($"{this.name}: Overriding OnHitWith(Character) ");
+        
 
     }
 

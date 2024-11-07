@@ -8,10 +8,10 @@ public class Banana : Weapon
 
     public void Start()
     {
-        Damage = 30;
+       
         speed = 4f;
         Move();
-        //OnHitWith();
+        OnHitWith();
     }
 
 
@@ -20,14 +20,13 @@ public class Banana : Weapon
 
     public override void Move()
     {
-        Debug.Log("Banana is moving with transform constant speed");
-
+      
     }
 
 
 
 
-    public override void OnHitWith(Character character)
+    public override void OnHitWith()
     {
 
 
