@@ -18,7 +18,7 @@ public class Croccodile : Enemy, IShootable
 
     void Start()
     {
-        Init(30);
+        Init(100);
         DamageHit = 30;
         BulletTimer = 1.0f;
         BulletSpawnTime = 0.0f;
@@ -44,7 +44,7 @@ public class Croccodile : Enemy, IShootable
     {
         if (BulletSpawnTime >= BulletTimer)
         {
-            anim.SetTrigger("Shooter");
+            anim.SetTrigger("Shoot");
             GameObject obj = Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
             Rock rock = obj.gameObject.GetComponent<Rock>();
             rock.Init(20, this);

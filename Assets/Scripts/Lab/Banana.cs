@@ -13,7 +13,7 @@ public class Banana : Weapon
     {
         Damage = 30;
         speed = 4.0f * GetShootDirection();
-        Move();
+       
 
     }
 
