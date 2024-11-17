@@ -19,14 +19,12 @@ public class Player : Character, IShootable
             Banana banana = obj.GetComponent<Banana>();
             banana.Init(10, this);
             BulletSpawnTime = 0;
-
-
         }
     }
 
     void Start()
     {
-        Init(100);
+        Init(10);
         BulletTimer = 1.0f;
         BulletSpawnTime = 0.0f;
 

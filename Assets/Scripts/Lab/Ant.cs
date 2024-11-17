@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Ant : Enemy
 {
     [SerializeField] Vector2 velocity;
     [SerializeField] Transform[] movePoints;
+    
 
     private void Start()
     {
-        Debug.Log("Hp" + Health);
-
+      
         Behavior();
     }
 
@@ -41,4 +42,15 @@ public class Ant : Enemy
         scale.x *= -1;
         transform.localScale = scale;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Character playerCharacter = collision.gameObject.GetComponent<Character>();
+            playerCharacter.TakeDamage(2);
+            
+        }
+    }
+
 }

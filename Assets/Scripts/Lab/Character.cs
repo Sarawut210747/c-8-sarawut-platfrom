@@ -25,8 +25,6 @@ public abstract class Character : MonoBehaviour
     {
         health = newHealth;
         healtBar.SetMaxHealth(newHealth);
-
-
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -42,9 +40,7 @@ public abstract class Character : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        
         Isdead();
-        
         healtBar.SetHealth(health);
     }
 }

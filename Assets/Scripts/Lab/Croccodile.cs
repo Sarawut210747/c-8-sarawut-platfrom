@@ -6,6 +6,7 @@ using UnityEngine;
 public class Croccodile : Enemy, IShootable
 {
     [SerializeField] private float attackRange;
+    
     public Player player;
 
 
@@ -18,8 +19,8 @@ public class Croccodile : Enemy, IShootable
 
     void Start()
     {
-        Init(100);
-        DamageHit = 30;
+        Init(10);
+        
         BulletTimer = 1.0f;
         BulletSpawnTime = 0.0f;
         player = GameObject.FindObjectOfType<Player>();

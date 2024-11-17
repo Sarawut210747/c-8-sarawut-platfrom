@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class Banana : Weapon
 {
-
+    bool hasHit;
     [SerializeField] private float speed;
 
 
     public void Start()
     {
-        Damage = 30;
+        Damage = 2;
         speed = 4.0f * GetShootDirection();
+        hasHit = false;
        
 
     }
@@ -24,8 +25,6 @@ public class Banana : Weapon
         float newY = transform.position.y;
         Vector2 newPosition = new Vector2(newX, newY);
         transform.position = newPosition;
-        //Debug.Log($"{this.name} moving with transform constant speed");
-
     }
 
     private void FixedUpdate()
@@ -39,9 +38,11 @@ public class Banana : Weapon
     {
         if (character is Enemy)
         {
+            hasHit = true;
             character.TakeDamage(this.Damage);
+            Destroy(this.gameObject);
         }
-        //Console.WriteLine()
+        
     }
 
 }
